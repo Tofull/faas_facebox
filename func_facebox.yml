@@ -1,0 +1,11 @@
+provider:
+  name: faas
+  gateway: http://localhost:8080
+
+functions:
+  anonymize:
+    lang: Dockerfile
+    handler: ./faas_anonymizer
+    image: functions/faas_anonymizer:latest
+    environment:
+      facebox: http://localhost:8081
