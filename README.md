@@ -25,7 +25,7 @@ Input                      |  Output
 
 3. Set your MachineBox key as environment variable : 
 
-    `MB_KEY="ThIsIsThEKeYiGeTfRoMhTtPs://mAcHiNeBoX.Io/aCcOuCt"`
+    `MB_KEY="ThIsIsThEKeYiGeTfRoMhTtPs://mAcHiNeBoX.Io/aCcOuNt"`
 
 4. Init your docker swarm cluster : 
 
@@ -46,7 +46,7 @@ Input                      |  Output
 
 ### Anonymize your pictures !
 
-I arbitrary chose this picture for the test *(first Google Images item for keyword people): 
+I arbitrary chose this picture for the test *(first Google Images item for keyword people)*: 
 <p align="center">
     <img src="assets_for_documentation/example_people.jpg" alt="people" height="200"/>
 </p>
@@ -111,4 +111,4 @@ For more details about [OpenFaaS](https://www.openfaas.com/).
 
 Give this repository a star (because it's my first golang function hack) : [![GitHub stars](https://img.shields.io/github/stars/Tofull/faas_facebox.svg?logo=github&style=social&label=Star&maxAge=2592000)](https://GitHub.com/Tofull/faas_facebox/stargazers/)
 
-Follow my activities : [![Twitter URL](https://img.shields.io/twitter/url/https/twitter.com/fold_left.svg?logo=twitter&style=social&label=_Tofull)](https://twitter.com/_Tofull) [![Github URL](https://img.shields.io/badge/style--green.svg?logo=github&style=social&label=tofull)](https://github.com/tofull) [![Github URL](https://img.shields.io/badge/style--green.svg?style=social&label=on%20my%20blog)](https://tofull.github.io/) 
+Follow my activities : [![Twitter URL](https://img.shields.io/twitter/url/https/twitter.com/fold_left.svg?logo=twitter&style=social&label=_Tofull)](https://twitter.com/_Tofull) [![Github URL](https://img.shields.io/badge/style--green.svg?logo=github&style=social&label=tofull)](https://github.com/tofull) [![Blog URL](https://img.shields.io/badge/style--green.svg?style=social&label=on%20my%20blog)](https://tofull.github.io/) 
