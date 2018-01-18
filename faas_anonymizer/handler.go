@@ -43,7 +43,7 @@ func main() {
 	
 	if err != nil {
 		log.Fatalf("Cannot read input %s.\n", err)
-        return
+        	return
 	}
 
 	// Download the image from url
@@ -84,7 +84,7 @@ func main() {
 	// Write binary data in stdout
 	buf := new(bytes.Buffer)
 	switch format {
-	case "jpeg":
+		case "jpeg":
 			err := jpeg.Encode(buf, anonImg, &jpeg.Options{Quality: 100})
 			if err != nil {
 				fmt.Printf(err.Error())
