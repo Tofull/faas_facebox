@@ -9,7 +9,7 @@ This repository provides an OpenFaaS function to remove faces on pictures thanks
 
 Input                      |  Output                   |  [Output with blur effect](#apply-effect-on-face)
 :-------------------------:|:-------------------------:|:-------------------------:
-![my profile picture](https://avatars3.githubusercontent.com/u/15694700?s=400&u=cccde5aa45d3d40fd4c00794bba3b74cce88488b&v=4)  |  ![who is this ?](assets_for_documentation/anonymized_profile.jpg)  |  [![who is this ?](assets_for_documentation/profile_blur.jpg)](#apply-effect-on-face)
+![my profile picture](https://avatars3.githubusercontent.com/u/15694700?s=400&u=cccde5aa45d3d40fd4c00794bba3b74cce88488b&v=4)  |  ![who is this ?](assets_for_documentation/anonymized_profile.jpg)  |  [![who is this ?](assets_for_documentation/blur_face.jpg)](#apply-effect-on-face)
 
 
 
