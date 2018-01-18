@@ -20,6 +20,8 @@ import (
 	"net/http"
 	"os"
 	"github.com/machinebox/sdk-go/facebox"
+	"github.com/anthonynsimon/bild/blur"
+	"github.com/anthonynsimon/bild/transform"
 )
 
 func main() {
@@ -27,11 +29,16 @@ func main() {
 	var (
 		faceboxDefault string = "http://localhost:yourFaceBoxPort"
 		faceboxAddr = flag.String("facebox", faceboxDefault, "Facebox address")
+		effectDefault string = ""
+		effect = flag.String("effect", effectDefault, "Applied effect on the face (blur)")
 	)
 	
-	// overwrite faceboxDefault with os env var
+	// overwrite default with os env var
 	if faceboxDefault := os.Getenv("facebox"); faceboxDefault != "" {
 		faceboxAddr = &faceboxDefault
+	}
+	if effectDefault := os.Getenv("effect"); effectDefault != "" {
+		effect = &effectDefault
 	}
 
 
@@ -79,7 +86,13 @@ func main() {
 	}
 
 	// Anonymise it
-	anonImg := anonymise(img, faces)
+	var anonImg image.Image
+	switch *effect {
+		case "blur":
+			anonImg = blur_anonymise(img, faces)
+		default:
+			anonImg = anonymise(img, faces)
+	}
 
 	// Write binary data in stdout
 	buf := new(bytes.Buffer)
@@ -127,6 +140,32 @@ func anonymise(src image.Image, faces []facebox.Face) image.Image {
 			dstImage,
 			faceRect,
 			&image.Uniform{color.Black},
+			facePos,
+			draw.Src)
+	}
+	return dstImage
+}
+
+// Apply blur effect on faces
+func blur_anonymise(src image.Image, faces []facebox.Face) image.Image {
+	dstImage := image.NewRGBA(src.Bounds())
+	draw.Draw(dstImage, src.Bounds(), src, image.ZP, draw.Src)
+	for _, face := range faces {
+		faceRect := image.Rect(
+			face.Rect.Left,
+			face.Rect.Top,
+			face.Rect.Left+face.Rect.Width,
+			face.Rect.Top+face.Rect.Height,
+		)
+
+		rect_face := transform.Crop(src, faceRect)
+		blurred_face := blur.Box(rect_face, 10.0)
+
+		facePos := image.Pt(face.Rect.Left, face.Rect.Top)
+		draw.Draw(
+			dstImage,
+			faceRect,
+			blurred_face,
 			facePos,
 			draw.Src)
 	}

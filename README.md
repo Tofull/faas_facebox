@@ -1,4 +1,4 @@
-# OpenFaaS function : faceBox from MachineBox [![GitHub stars](https://img.shields.io/github/stars/Tofull/faas_facebox.svg?style=social&label=Star&maxAge=2592000)](https://GitHub.com/Tofull/faas_facebox/stargazers/)
+# OpenFaaS function : faceBox from MachineBox [![GitHub stars](https://img.shields.io/github/stars/Tofull/faas_facebox.svg?style=social&label=Star)](https://GitHub.com/Tofull/faas_facebox/stargazers/)
 
 [![Twitter URL](https://img.shields.io/twitter/url/https/twitter.com/fold_left.svg?logo=twitter&style=social&label=_Tofull)](https://twitter.com/_Tofull) [![Github URL](https://img.shields.io/badge/style--green.svg?logo=github&style=social&label=tofull)](https://github.com/tofull)
 
@@ -7,9 +7,9 @@
 This repository provides an OpenFaaS function to remove faces on pictures thanks to online machine learning service called MachineBox.
 
 
-Input                      |  Output
-:-------------------------:|:-------------------------:
-![my profile picture](https://avatars3.githubusercontent.com/u/15694700?s=400&u=cccde5aa45d3d40fd4c00794bba3b74cce88488b&v=4)  |  ![who is this ?](assets_for_documentation/anonymized_profile.png)
+Input                      |  Output                   |  [Output with blur effect](#apply-effect-on-face)
+:-------------------------:|:-------------------------:|:-------------------------:
+![my profile picture](https://avatars3.githubusercontent.com/u/15694700?s=400&u=cccde5aa45d3d40fd4c00794bba3b74cce88488b&v=4)  |  ![who is this ?](assets_for_documentation/anonymized_profile.jpg)  |  [![who is this ?](assets_for_documentation/profile_blur.jpg)](#apply-effect-on-face)
 
 
 
@@ -84,6 +84,8 @@ docker swarm leave --force
 ```
 
 ### Options : 
+
+#### Use another FaceBox server url
 If you want to use another FaceBox server url, simply change the *facebox* environment variable in file *func_facebox.yml* to fit with yours.
 ```yaml
 functions:
@@ -93,6 +95,20 @@ functions:
     image: functions/faas_anonymizer:latest
     environment:
       facebox: https://myFaceBoxServer
+```
+
+#### Apply effect on face
+Remove faces is too much for you ? Why not just blur the people ? 
+Just set the environment *effect* to *blur*, or simply use the blur function I added for you.
+```yaml
+functions:
+  blur:
+    lang: Dockerfile
+    handler: ./faas_blur
+    image: functions/faas_blur:latest
+    environment:
+      facebox: http://localhost:8081
+      effect: blur
 ```
 
 ## Motivation
@@ -109,6 +125,6 @@ For more details about [Machine Box](https://machinebox.io/).
 
 For more details about [OpenFaaS](https://www.openfaas.com/).
 
-Give this repository a star (because it's my first golang function hack) : [![GitHub stars](https://img.shields.io/github/stars/Tofull/faas_facebox.svg?logo=github&style=social&label=Star&maxAge=2592000)](https://GitHub.com/Tofull/faas_facebox/stargazers/)
+Give this repository a star (because it's my first golang function hack) : [![GitHub stars](https://img.shields.io/github/stars/Tofull/faas_facebox.svg?logo=github&style=social&label=Star)](https://GitHub.com/Tofull/faas_facebox/stargazers/)
 
 Follow my activities : [![Twitter URL](https://img.shields.io/twitter/url/https/twitter.com/fold_left.svg?logo=twitter&style=social&label=_Tofull)](https://twitter.com/_Tofull) [![Github URL](https://img.shields.io/badge/style--green.svg?logo=github&style=social&label=tofull)](https://github.com/tofull) [![Blog URL](https://img.shields.io/badge/style--green.svg?style=social&label=on%20my%20blog)](https://tofull.github.io/) 

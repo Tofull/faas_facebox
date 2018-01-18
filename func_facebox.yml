@@ -9,3 +9,12 @@ functions:
     image: functions/faas_anonymizer:latest
     environment:
       facebox: http://localhost:8081
+
+  blur:
+    lang: Dockerfile
+    handler: ./faas_blur
+    image: functions/faas_blur:latest
+    environment:
+      facebox: http://localhost:8081
+      effect: blur
+
