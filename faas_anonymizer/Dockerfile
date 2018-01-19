@@ -8,6 +8,8 @@ RUN apk --no-cache add make curl \
 
 RUN apk add --no-cache git mercurial \
     && go get github.com/machinebox/sdk-go/facebox \
+    && go get github.com/anthonynsimon/bild/blur \
+    && go get github.com/anthonynsimon/bild/transform \
     && apk del git mercurial
 
 WORKDIR /go/src/faas_facebox
